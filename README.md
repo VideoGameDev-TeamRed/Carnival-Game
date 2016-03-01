@@ -7,7 +7,7 @@ First person carnival game for Video Game Development Class.
 * [Aaron Martin](https://github.com/Amart36) - Level Designer/Developer
 * [Kameron McCombs](https://github.com/kam7713) - Developer
 * [Anusha Singh](https://github.com/sanusha) - UI Developer
-* Cole Thornton - Level Designer/Developer
+* [Cole Thornton](https://github.com/Cthornton1993) - Level Designer/Developer
 * [Aaron Weaver](https://github.com/Aaron-Weaver) - Team Lead/Developer
 
 ### Artists
