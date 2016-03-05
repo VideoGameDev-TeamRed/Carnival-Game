@@ -19,16 +19,29 @@ public class Cannon : IRotateable, IShootable {
 		this.IsLoaded = true;
 	}
 
-	public void Rotate (float turnSpeed) {
+	public void RotateHorizontal (float turnSpeed) {
 		CannonObject.transform.Rotate(new Vector3(0, turnSpeed, 0));
+	}
+
+	public void RotateVertical (float turnSpeed) {
+		Debug.Log ("Rotating vertically");
+
+		// Finds the subview of the Cannon that is the cylinder.
+		// This Script is to be used with the Cannon prefab, so Cylinder will never be null.
+		Transform cylinder = CannonObject.transform.Find("Cannon/Cylinder");
+
+		cylinder.Rotate(new Vector3(0, turnSpeed, 0));
 	}
 
 	public void Fire (float shotForce) {
 		IsLoaded = false;
 
+		Transform cannonTransform = CannonObject.transform.Find("Cannon/Cylinder");
+
 		GameObject cannonBall = (GameObject) GameObject.Instantiate 
 			(Resources.Load("Prefabs/Cannonball"), CannonObject.transform.position, CannonObject.transform.rotation);
 		cannonBall.GetComponent<CannonballBehaviour> ().ShotForce = shotForce;
+		cannonBall.GetComponent<CannonballBehaviour> ().CannonTransform = cannonTransform;
 		GameObject.Destroy (cannonBall, BALL_TIME); 
 	}
 

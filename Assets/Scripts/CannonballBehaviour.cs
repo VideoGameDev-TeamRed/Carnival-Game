@@ -6,12 +6,15 @@ public class CannonballBehaviour : MonoBehaviour {
 
 	public float ShotForce { get; set; }
 
+	public Transform CannonTransform { get; set; }
+
 	// Use this for initialization
 	void Start () {
-		// Rotates ball before shooting to compensate for angle of barrel
-		this.gameObject.transform.Rotate (new Vector3 (0, 0, -25.0f));
+		
+		// Conforming cannonball to the actual firing apparatus's rotation
+		this.gameObject.transform.rotation = CannonTransform.rotation;
 
-		Vector3 shotVector = -this.gameObject.transform.right * ShotForce;
+		Vector3 shotVector = this.gameObject.transform.forward * ShotForce;
 
 		this.gameObject.GetComponent<Rigidbody> ().AddForce (shotVector);
 	}

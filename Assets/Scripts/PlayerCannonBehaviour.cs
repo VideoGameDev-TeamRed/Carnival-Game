@@ -24,10 +24,15 @@ public class PlayerCannonBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		float rotateAxis = Input.GetAxisRaw ("Horizontal");
+		float horizontalRotateAxis = Input.GetAxisRaw ("Horizontal");
+		float verticalRotateAxis = Input.GetAxisRaw ("Vertical");
 
-		if (rotateAxis != 0) {
-			this.PlayerCannon.Rotate (rotateAxis * RotateSpeed);
+		if (horizontalRotateAxis != 0) {
+			this.PlayerCannon.RotateHorizontal (horizontalRotateAxis * RotateSpeed);
+		}
+
+		if (verticalRotateAxis != 0) {
+			this.PlayerCannon.RotateVertical (verticalRotateAxis * RotateSpeed);
 		}
 
 		if (Input.GetKeyDown (KeyCode.Space) ||
