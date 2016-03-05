@@ -1,22 +1,10 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: 89208a62f5226497d8980f8ab5811b5e
-timeCreated: 1457219205
-=======
-guid: 74a7a07883c2ce043be4c0e6b945ab3f
-timeCreated: 1457219443
->>>>>>> origin/master
+guid: 2a1c70b371536d5488cc14958b0b5f1c
+timeCreated: 1457208962
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
-  fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Cylinder
-    7400000: Default Take
-    9500000: //RootNode
+  fileIDToRecycleName: {}
   materials:
     importMaterials: 1
     materialName: 0
