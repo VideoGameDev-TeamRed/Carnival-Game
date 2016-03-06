@@ -5,7 +5,7 @@ public class BlockSpawn : MonoBehaviour {
 
 
 	public float Speed = 0.025f;
-	public float DistanceAllowed = -4.75f;
+	public float DistanceAllowed = -5.75f;
 	public GameObject Pyramid;
 	public Vector3 OriginPosition;
 	private Quaternion OriginRotation;
@@ -33,6 +33,22 @@ public class BlockSpawn : MonoBehaviour {
 		//The following if statement keeps there from being unlimited chains of pyramids
 		if (this.transform.position.x < DistanceAllowed) {
 			Destroy (this.gameObject);
+
+			if (this.transform.tag.Equals ("1")) {
+				ScoreWatch.P1_ObjectsLeft = 3;
+			}
+			if (this.transform.tag.Equals ("2")) {
+				ScoreWatch.P2_ObjectsLeft = 3;
+			}
+			if (this.transform.tag.Equals ("3")) {
+				ScoreWatch.P3_ObjectsLeft = 3;
+			}
+			if (this.transform.tag.Equals ("4")) {
+				ScoreWatch.P4_ObjectsLeft = 3;
+			}
+			if (this.transform.tag.Equals ("5")) {
+				ScoreWatch.P5_ObjectsLeft = 3;
+			}
 		}
 
 	}

@@ -82,28 +82,28 @@ public class UIScript : MonoBehaviour
 
 	IEnumerator StartTimer()
 	{
-		while (currentTime != 0) 
+		while (currentTime >= 0) 
 		{
 //			UpdateScore ();
 //			UpdateScore ();
 			countDownTimerText.text = "Time Left: " + currentTime;
 			yield return new WaitForSeconds (1);
 			currentTime -= 1;
-		}
-			
-		if (currentTime == 0) 
-		{
-			backgroundAudio.Pause ();
-			gameOverAudio.Play ();
-			background.enabled = true;
-			gameOverText.enabled = true;
-			yesButton.gameObject.SetActive (true);
-			noButton.gameObject.SetActive (true);
 
-			UpdateHighScore ();
-			highScoreText.enabled = true;
+			if (currentTime == 0) 
+			{
+				backgroundAudio.Pause ();
+				gameOverAudio.Play ();
+				background.enabled = true;
+				gameOverText.enabled = true;
+				yesButton.gameObject.SetActive (true);
+				noButton.gameObject.SetActive (true);
 
-			restartGameText.enabled = true;
+				UpdateHighScore ();
+				highScoreText.enabled = true;
+
+				restartGameText.enabled = true;
+			}
 		}
 	}
 
