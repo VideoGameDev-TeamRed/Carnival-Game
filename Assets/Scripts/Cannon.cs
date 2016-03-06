@@ -12,7 +12,7 @@ public class Cannon : IRotateable, IShootable {
 
 	public bool IsLoaded { get; set; }
 
-	private const float BALL_TIME = 10.0f;
+	private const float BALL_TIME = 2f;
 
 	public Cannon(GameObject cannonObject) {
 		this.CannonObject = cannonObject;
@@ -24,7 +24,7 @@ public class Cannon : IRotateable, IShootable {
 	}
 
 	public void RotateVertical (float turnSpeed) {
-		Debug.Log ("Rotating vertically");
+		//Debug.Log ("Rotating vertically");
 
 		// Finds the subview of the Cannon that is the cylinder.
 		// This Script is to be used with the Cannon prefab, so Cylinder will never be null.
