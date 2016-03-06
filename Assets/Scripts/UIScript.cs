@@ -15,7 +15,8 @@ public class UIScript : MonoBehaviour
 	public Button yesButton;
 	public Button noButton;
 
-	bool restart =  false;
+	public AudioSource gameOverAudio;
+	public AudioSource backgroundAudio;
 
 	int currentTime;
 	int maxTime = 60;
@@ -42,7 +43,7 @@ public class UIScript : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		//UpdateScore ();
+
 	}
 
 	public void UpdateScore()
@@ -71,7 +72,7 @@ public class UIScript : MonoBehaviour
 
 	public void OnClickYesButton()
 	{
-		SceneManager.LoadScene ("Main");
+		SceneManager.LoadScene ("CarnivalScene");
 	}
 
 	public void OnClickNoButton()
@@ -92,6 +93,8 @@ public class UIScript : MonoBehaviour
 			
 		if (currentTime == 0) 
 		{
+			backgroundAudio.Pause ();
+			gameOverAudio.Play ();
 			background.enabled = true;
 			gameOverText.enabled = true;
 			yesButton.gameObject.SetActive (true);
@@ -100,7 +103,6 @@ public class UIScript : MonoBehaviour
 			UpdateHighScore ();
 			highScoreText.enabled = true;
 
-			restart = true;
 			restartGameText.enabled = true;
 		}
 	}
