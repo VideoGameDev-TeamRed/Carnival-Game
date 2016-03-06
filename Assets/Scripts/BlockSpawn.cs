@@ -18,7 +18,7 @@ public class BlockSpawn : MonoBehaviour {
 		//LINE TO DETERMINE WHERE PYRAMIDS START, CHANGE TO WHATEVER IT NEEDS TO BE
 		OriginPosition = new Vector3 (19.5f, 0.59f, -2.207f);
 
-		OriginRotation = Quaternion.Euler (-90, 0, 0);
+		//OriginRotation = Quaternion.Euler (-90, 0, 0);
 	}
 
 	// Update is called once per frame
