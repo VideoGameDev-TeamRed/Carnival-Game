@@ -9,10 +9,11 @@ public class EachObject : MonoBehaviour {
 
 	public GameObject Platform;
 	public bool KnockedOff = false;
-
+	public AudioSource sourceOne;
 	// Use this for initialization
 	void Start () {
 		RB.isKinematic = true;
+		sourceOne = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -54,8 +55,8 @@ public class EachObject : MonoBehaviour {
 		if (other.transform.tag.Equals("Ball")) {
 			Debug.Log ("Hit");
 			RB.isKinematic = false;
-
 			vel =	RB.gameObject.GetComponent<Rigidbody> ().velocity;
+			sourceOne.Play ();
 
 			RB.AddForce (vel/300);
 

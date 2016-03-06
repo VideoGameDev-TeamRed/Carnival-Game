@@ -16,9 +16,11 @@ public class PlayerCannonBehaviour : MonoBehaviour {
 	[SerializeField]
 	private float ReloadSpeed = 1.0f;
 
+	public AudioSource sourceOne;
 	// Use this for initialization
 	void Start () {
 		this.PlayerCannon = new Cannon (this.gameObject);
+		sourceOne = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -39,6 +41,7 @@ public class PlayerCannonBehaviour : MonoBehaviour {
 				
 			if (this.PlayerCannon.IsLoaded) {
 				this.PlayerCannon.Fire (FireForce);
+				sourceOne.Play ();
 				StartCoroutine (this.PlayerCannon.Reload(ReloadSpeed));
 			}
 		}
