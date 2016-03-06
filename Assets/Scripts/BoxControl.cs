@@ -4,7 +4,6 @@ using System.Collections;
 public class BoxControl : MonoBehaviour {
 
 	public Rigidbody RB;
-
 	// Use this for initialization
 	void Start () {
 		RB.isKinematic = false;
@@ -17,9 +16,10 @@ public class BoxControl : MonoBehaviour {
 
 	void OnCollisionEnter(Collision other)
 	{
-		if (other.transform.tag.Equals("Box")) {
+		if (other.transform.tag.Equals("Ball")) {
 			Debug.Log ("Hit");
 			RB.isKinematic = true;
 		}
+			
 	}
 }
