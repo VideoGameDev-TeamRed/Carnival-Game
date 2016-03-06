@@ -18,7 +18,7 @@ public class EachObject : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 			
-		if (this.transform.position.y < Platform.transform.position.y && KnockedOff==false) {
+		if ((this.transform.position.y < Platform.transform.position.y) && KnockedOff==false) {
 
 			KnockedOff = true;
 
@@ -57,7 +57,7 @@ public class EachObject : MonoBehaviour {
 
 			vel =	RB.gameObject.GetComponent<Rigidbody> ().velocity;
 
-			RB.AddForce (vel);
+			RB.AddForce (vel/300);
 
 		}
 	}

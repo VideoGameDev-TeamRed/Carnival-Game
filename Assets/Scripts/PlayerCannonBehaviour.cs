@@ -11,7 +11,7 @@ public class PlayerCannonBehaviour : MonoBehaviour {
 	private float RotateSpeed = 3.0f;
 
 	[SerializeField]
-	private float FireForce = 10.0f;
+	private float FireForce = 500.0f;
 
 	[SerializeField]
 	private float ReloadSpeed = 1.0f;
@@ -24,8 +24,8 @@ public class PlayerCannonBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		float horizontalRotateAxis = Input.GetAxisRaw ("Horizontal");
-		float verticalRotateAxis = Input.GetAxisRaw ("Vertical");
+		float horizontalRotateAxis = Input.GetAxis ("Mouse X");
+		float verticalRotateAxis = Input.GetAxis ("Mouse Y");
 
 		if (horizontalRotateAxis != 0) {
 			this.PlayerCannon.RotateHorizontal (horizontalRotateAxis * RotateSpeed);
@@ -35,9 +35,7 @@ public class PlayerCannonBehaviour : MonoBehaviour {
 			this.PlayerCannon.RotateVertical (verticalRotateAxis * RotateSpeed);
 		}
 
-		if (Input.GetKeyDown (KeyCode.Space) ||
-			Input.GetKeyDown (KeyCode.Return) ||
-			Input.GetKeyDown (KeyCode.KeypadEnter)) {
+		if (Input.GetMouseButtonDown(0)) {
 				
 			if (this.PlayerCannon.IsLoaded) {
 				this.PlayerCannon.Fire (FireForce);
