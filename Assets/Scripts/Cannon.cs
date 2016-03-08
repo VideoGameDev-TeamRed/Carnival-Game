@@ -20,7 +20,28 @@ public class Cannon : IRotateable, IShootable {
 	}
 
 	public void RotateHorizontal (float turnSpeed) {
-		CannonObject.transform.Rotate(new Vector3(0, turnSpeed, 0));
+
+		Transform cylinder = CannonObject.transform.Find("Cannon/Cylinder");
+		Vector3 eulerAngles = cylinder.eulerAngles;
+
+		Debug.Log ("x: " + eulerAngles.x + ",y: " + eulerAngles.y + ",z: " + eulerAngles.z);
+
+		if (eulerAngles.y >= 120 && eulerAngles.y <= 240) {
+			//cylinder.Rotate (new Vector3 (turnSpeed, 0, 0));
+			CannonObject.transform.Rotate(new Vector3(0, turnSpeed, 0));
+		}
+
+		if (eulerAngles.y >= 240 && turnSpeed < 0) {
+			//cylinder.Rotate (new Vector3 (turnSpeed, 0, 0));
+			CannonObject.transform.Rotate(new Vector3(0, turnSpeed, 0));
+		}
+
+		if (eulerAngles.y <= 120 && turnSpeed > 0) {
+			//cylinder.Rotate (new Vector3 (turnSpeed, 0, 0));
+			CannonObject.transform.Rotate(new Vector3(0, turnSpeed, 0));
+		}
+
+		//CannonObject.transform.Rotate(new Vector3(0, turnSpeed, 0));
 	}
 
 	public void RotateVertical (float turnSpeed) {
@@ -31,7 +52,7 @@ public class Cannon : IRotateable, IShootable {
 		Transform cylinder = CannonObject.transform.Find("Cannon/Cylinder");
 
 		Vector3 eulerAngles = cylinder.eulerAngles;
-		Debug.Log ("x: " + eulerAngles.x + ",y: " + eulerAngles.y + ",z: " + eulerAngles.z);
+		//Debug.Log ("x: " + eulerAngles.x + ",y: " + eulerAngles.y + ",z: " + eulerAngles.z);
 
 
 		if (eulerAngles.x >= 300 && eulerAngles.x <= 355) {
