@@ -38,6 +38,10 @@ public class UIScript : MonoBehaviour
 		currentTime = maxTime;
 		yesButton.gameObject.SetActive(false);
 		noButton.gameObject.SetActive(false);
+
+		AudioSource[] audioSources = GetComponents<AudioSource>();
+		gameOverAudio = audioSources[0];
+		backgroundAudio = audioSources[1];
 	}
 
 	// Update is called once per frame
@@ -82,28 +86,30 @@ public class UIScript : MonoBehaviour
 
 	IEnumerator StartTimer()
 	{
-		while (currentTime != 0) 
+		while (currentTime >= 0) 
 		{
 //			UpdateScore ();
 //			UpdateScore ();
 			countDownTimerText.text = "Time Left: " + currentTime;
 			yield return new WaitForSeconds (1);
 			currentTime -= 1;
-		}
+
+			if (currentTime == 0) 
+			{
+				countDownTimerText.text = "Time Left: " + currentTime;
 			
-		if (currentTime == 0) 
-		{
-			backgroundAudio.Pause ();
-			gameOverAudio.Play ();
-			background.enabled = true;
-			gameOverText.enabled = true;
-			yesButton.gameObject.SetActive (true);
-			noButton.gameObject.SetActive (true);
+				backgroundAudio.Pause ();
+				gameOverAudio.Play ();
+				background.enabled = true;
+				gameOverText.enabled = true;
+				yesButton.gameObject.SetActive (true);
+				noButton.gameObject.SetActive (true);
 
-			UpdateHighScore ();
-			highScoreText.enabled = true;
+				UpdateHighScore ();
+				highScoreText.enabled = true;
 
-			restartGameText.enabled = true;
+				restartGameText.enabled = true;
+			}
 		}
 	}
 
