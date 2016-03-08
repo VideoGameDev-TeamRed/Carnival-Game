@@ -30,20 +30,21 @@ public class Cannon : IRotateable, IShootable {
 		// This Script is to be used with the lCannon prefab, so Cylinder will never be null.
 		Transform cylinder = CannonObject.transform.Find("Cannon/Cylinder");
 
-		Quaternion rotation = cylinder.rotation;
+		Vector3 eulerAngles = cylinder.eulerAngles;
+		Debug.Log ("x: " + eulerAngles.x + ",y: " + eulerAngles.y + ",z: " + eulerAngles.z);
 
-		if (cylinder.rotation.x > .65 && cylinder.rotation.x < .7) {
-			Debug.Log ("Rotation: " + cylinder.rotation.x);
+
+		if (eulerAngles.x >= 300 && eulerAngles.x <= 355) {
 			cylinder.Rotate (new Vector3 (0, turnSpeed, 0));
 		}
 
-		if (cylinder.rotation.x > .68 && turnSpeed < 0) {
-		} else if (cylinder.rotation.x < .7 && turnSpeed > 0) {
-		} else {
+		if (eulerAngles.x >= 355 && turnSpeed > 0) {
 			cylinder.Rotate (new Vector3 (0, turnSpeed, 0));
 		}
 
-		//cylinder.Rotate (new Vector3 (0, turnSpeed, 0));
+		if (eulerAngles.x <= 300 && turnSpeed < 0) {
+			cylinder.Rotate (new Vector3 (0, turnSpeed, 0));
+		}
 	}
 
 	public void Fire (float shotForce) {
