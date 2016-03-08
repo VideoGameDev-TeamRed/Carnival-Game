@@ -27,10 +27,23 @@ public class Cannon : IRotateable, IShootable {
 		//Debug.Log ("Rotating vertically");
 
 		// Finds the subview of the Cannon that is the cylinder.
-		// This Script is to be used with the Cannon prefab, so Cylinder will never be null.
+		// This Script is to be used with the lCannon prefab, so Cylinder will never be null.
 		Transform cylinder = CannonObject.transform.Find("Cannon/Cylinder");
 
-		cylinder.Rotate(new Vector3(0, turnSpeed, 0));
+		Quaternion rotation = cylinder.rotation;
+
+		if (cylinder.rotation.x > .65 && cylinder.rotation.x < .7) {
+			Debug.Log ("Rotation: " + cylinder.rotation.x);
+			cylinder.Rotate (new Vector3 (0, turnSpeed, 0));
+		}
+
+		if (cylinder.rotation.x > .68 && turnSpeed < 0) {
+		} else if (cylinder.rotation.x < .7 && turnSpeed > 0) {
+		} else {
+			cylinder.Rotate (new Vector3 (0, turnSpeed, 0));
+		}
+
+		//cylinder.Rotate (new Vector3 (0, turnSpeed, 0));
 	}
 
 	public void Fire (float shotForce) {
